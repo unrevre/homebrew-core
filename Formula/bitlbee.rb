@@ -26,6 +26,7 @@ class Bitlbee < Formula
   depends_on "glib"
   depends_on "gnutls"
   depends_on "libgcrypt"
+  depends_on "libpurple"
 
   def install
     args = %W[
@@ -37,6 +38,9 @@ class Bitlbee < Formula
       --pidfile=#{var}/bitlbee/run/bitlbee.pid
       --config=#{var}/bitlbee/lib/
       --ipsocket=#{var}/bitlbee/run/bitlbee.sock
+      --jabber=0
+      --twitter=0
+      --purple=1
     ]
 
     system "./configure", *args
