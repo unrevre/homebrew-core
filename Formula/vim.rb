@@ -14,10 +14,7 @@ class Vim < Formula
   end
 
   depends_on "gettext"
-  depends_on "lua"
-  depends_on "perl"
   depends_on "python@3.9"
-  depends_on "ruby"
 
   uses_from_macos "ncurses"
 
@@ -47,15 +44,13 @@ class Vim < Formula
                           "--enable-multibyte",
                           "--with-tlib=ncurses",
                           "--with-compiledby=Homebrew",
-                          "--enable-cscope",
                           "--enable-terminal",
-                          "--enable-perlinterp",
-                          "--enable-rubyinterp",
                           "--enable-python3interp",
                           "--enable-gui=no",
                           "--without-x",
-                          "--enable-luainterp",
-                          "--with-lua-prefix=#{Formula["lua"].opt_prefix}"
+                          "--with-features=big",
+                          "--disable-acl",
+                          "--disable-netbeans"
     system "make"
     # Parallel install could miss some symlinks
     # https://github.com/vim/vim/issues/1031
