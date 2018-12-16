@@ -50,7 +50,10 @@ class Vim < Formula
                           "--without-x",
                           "--with-features=big",
                           "--disable-acl",
-                          "--disable-netbeans"
+                          "--disable-netbeans",
+                          "--disable-arabic",
+                          "--disable-farsi",
+                          "--disable-rightleft"
     system "make"
     # Parallel install could miss some symlinks
     # https://github.com/vim/vim/issues/1031
