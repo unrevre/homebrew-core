@@ -13,7 +13,6 @@ class Vim < Formula
     sha256 "7333e2d2f9e1f8bf9670a3f25719171d40ccf914e94fa05108b0b97ec74e6bd3" => :mojave
   end
 
-  depends_on "gettext"
   depends_on "python@3.9"
 
   uses_from_macos "ncurses"
@@ -49,6 +48,7 @@ class Vim < Formula
                           "--enable-gui=no",
                           "--without-x",
                           "--with-features=big",
+                          "--disable-nls",
                           "--disable-acl",
                           "--disable-netbeans",
                           "--disable-arabic",
@@ -72,6 +72,6 @@ class Vim < Formula
     EOS
     system bin/"vim", "-T", "dumb", "-s", "commands.vim", "test.txt"
     assert_equal "hello python3", File.read("test.txt").chomp
-    assert_match "+gettext", shell_output("#{bin}/vim --version")
+    assert_match "+syntax", shell_output("#{bin}/vim --version")
   end
 end
