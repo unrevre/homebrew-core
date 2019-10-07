@@ -35,7 +35,6 @@ class Mutt < Formula
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
-  depends_on "gpgme"
   depends_on "openssl@1.1"
   depends_on "tokyo-cabinet"
 
@@ -55,7 +54,6 @@ class Mutt < Formula
       --disable-dependency-tracking
       --disable-warnings
       --prefix=#{prefix}
-      --enable-debug
       --enable-hcache
       --enable-imap
       --enable-pop
@@ -65,7 +63,6 @@ class Mutt < Formula
       --with-sasl
       --with-ssl=#{Formula["openssl@1.1"].opt_prefix}
       --with-tokyocabinet
-      --enable-gpgme
     ]
 
     system "./prepare", *args
