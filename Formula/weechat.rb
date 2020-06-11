@@ -13,7 +13,6 @@ class Weechat < Formula
     sha256 "d6b2d901b348e487720f0a6b08a6714c7489a6a454f45e9f5006f8508a1be66b" => :high_sierra
   end
 
-  depends_on "asciidoctor" => :build
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "libgcrypt"
@@ -25,7 +24,7 @@ class Weechat < Formula
 
   def install
     args = std_cmake_args + %W[
-      -DENABLE_MAN=ON
+      -DENABLE_MAN=OFF
       -DENABLE_GUILE=OFF
       -DCA_FILE=#{Formula["gnutls"].pkgetc}/cert.pem
       -DENABLE_NLS=OFF
