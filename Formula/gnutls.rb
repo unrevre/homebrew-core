@@ -12,13 +12,6 @@ class Gnutls < Formula
     regex(/href=.*?gnutls[._-]v?(\d+(?:\.\d+)*)\.t/i)
   end
 
-  bottle do
-    sha256 "6f523e8ce74c567d17a4a5b69794e897074a016b895a5d8ef7122ac006b770fc" => :big_sur
-    sha256 "513407ec28ac63623dbc05ac6880d59cf7c082827687dfda7d0f065232151878" => :catalina
-    sha256 "cd25205fbf27599b4186f8549324a50f045fa680b8c02a98230dcf910dff0941" => :mojave
-    sha256 "5a1c108c598159c9d3dc203bed684cf70ca5dae5ee875166b35420fd2415a61e" => :high_sierra
-  end
-
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "pkg-config" => :build
@@ -29,7 +22,6 @@ class Gnutls < Formula
   depends_on "libunistring"
   depends_on "nettle"
   depends_on "p11-kit"
-  depends_on "unbound"
 
   on_linux do
     depends_on "autogen" => :build
