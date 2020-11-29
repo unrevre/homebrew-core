@@ -20,11 +20,11 @@ class Vimpc < Formula
   depends_on "pkg-config" => :build
   depends_on "libmpdclient"
   depends_on "pcre"
-  depends_on "taglib"
 
   def install
     system "./autogen.sh"
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
+                          "--enable-taglib=no",
                           "--prefix=#{prefix}"
     system "make", "install"
   end
