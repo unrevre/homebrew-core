@@ -15,8 +15,8 @@ class Qemu < Formula
 
   depends_on "libtool" => :build
   depends_on "pkg-config" => :build
+  depends_on "gettext"
   depends_on "glib"
-  depends_on "libpng"
   depends_on "ncurses"
   depends_on "pixman"
 
@@ -40,48 +40,67 @@ class Qemu < Formula
       --enable-curses
       --extra-cflags=-DNCURSES_WIDECHAR=1
       --disable-attr
+      --disable-auth-pam
+      --disable-bochs
       --disable-brlapi
       --disable-cap-ng
+      --disable-cloop
+      --disable-cocoa
+      --disable-crypto-afalg
       --disable-curl
       --disable-fdt
       --disable-gcrypt
       --disable-glusterfs
       --disable-gnutls
       --disable-gtk
+      --disable-hax
+      --disable-libdaxctl
       --disable-libiscsi
+      --disable-libnfs
+      --disable-libpmem
       --disable-libssh
+      --disable-libusb
+      --disable-libxml2
       --disable-linux-aio
+      --disable-linux-io-uring
       --disable-live-block-migration
+      --disable-lzfse
       --disable-lzo
+      --disable-mpath
+      --disable-netmap
       --disable-nettle
+      --disable-numa
       --disable-opengl
+      --disable-parallels
+      --disable-qed
       --disable-qom-cast-debug
       --disable-rbd
+      --disable-rdma
       --disable-replication
       --disable-sdl
       --disable-seccomp
+      --disable-sheepdog
       --disable-snappy
       --disable-tpm
+      --disable-usb-redir
       --disable-vde
+      --disable-vdi
+      --disable-vhost-crypto
+      --disable-vhost-kernel
       --disable-vhost-net
       --disable-vhost-scsi
       --disable-vhost-user
+      --disable-vhost-vdpa
       --disable-vhost-vsock
       --disable-virglrenderer
       --disable-virtfs
       --disable-vnc
+      --disable-vvfat
+      --disable-xen
       --disable-xfsctl
+      --disable-xkbcommon
+      --disable-zstd
     ]
-    # Sharing Samba directories in QEMU requires the samba.org smbd which is
-    # incompatible with the macOS-provided version. This will lead to
-    # silent runtime failures, so we set it to a Homebrew path in order to
-    # obtain sensible runtime errors. This will also be compatible with
-    # Samba installations from external taps.
-    args << "--smbd=#{HOMEBREW_PREFIX}/sbin/samba-dot-org-smbd"
-
-    on_macos do
-      args << "--enable-cocoa"
-    end
 
     system "./configure", *args
     system "make", "V=1", "install"
