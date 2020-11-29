@@ -16,26 +16,13 @@ class Mpd < Formula
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
-  depends_on "expat"
-  depends_on "faad2"
   depends_on "ffmpeg"
-  depends_on "flac"
-  depends_on "fluid-synth"
   depends_on "glib"
   depends_on "icu4c"
-  depends_on "lame"
   depends_on "libao"
-  depends_on "libgcrypt"
-  depends_on "libid3tag"
   depends_on "libmpdclient"
-  depends_on "libnfs"
   depends_on "libsamplerate"
-  depends_on "libshout"
-  depends_on "libupnp"
-  depends_on "libvorbis"
   depends_on macos: :mojave # requires C++17 features unavailable in High Sierra
-  depends_on "opus"
-  depends_on "sqlite"
 
   def install
     # mpd specifies -std=gnu++0x, but clang appears to try to build
@@ -45,19 +32,20 @@ class Mpd < Formula
 
     args = std_meson_args + %W[
       --sysconfdir=#{etc}
-      -Dlibwrap=disabled
-      -Dmad=disabled
-      -Dmpcdec=disabled
-      -Dsoundcloud=disabled
+      -Dauto_features=disabled
       -Dao=enabled
       -Dbzip2=enabled
-      -Dexpat=enabled
+      -Dcue=false
+      -Ddsd=false
       -Dffmpeg=enabled
-      -Dfluidsynth=enabled
-      -Dnfs=enabled
-      -Dshout=enabled
-      -Dupnp=enabled
-      -Dvorbisenc=enabled
+      -Dhtml_manual=false
+      -Dhttpd=false
+      -Dicu=enabled
+      -Dlibmpdclient=enabled
+      -Dlibsamplerate=enabled
+      -Dneighbor=false
+      -Drecorder=false
+      -Dzlib=enabled
     ]
 
     system "meson", *args, "output/release", "."
