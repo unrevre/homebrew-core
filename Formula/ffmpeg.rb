@@ -33,8 +33,11 @@ class Ffmpeg < Formula
 
   depends_on "nasm" => :build
   depends_on "pkg-config" => :build
+  depends_on "libvpx"
   depends_on "opus"
   depends_on "sdl2"
+  depends_on "x264"
+  depends_on "x265"
   depends_on "xz"
 
   uses_from_macos "bzip2"
@@ -56,7 +59,7 @@ class Ffmpeg < Formula
       --enable-version3
       --enable-bsf=aac_adtstoasc
       --enable-encoder=aac,mpeg4,libopus
-      --enable-decoder=aac,mpeg4,libopus
+      --enable-decoder=aac,h264,mpeg4,libopus,vp8,vp9
       --enable-muxer=adts,flv,matroska,mp4,opus
       --enable-demuxer=aac,concat,flv,live_flv,matroska,mov,ogg
       --enable-filter=aresample
@@ -68,6 +71,9 @@ class Ffmpeg < Formula
       --enable-avfoundation
       --enable-bzlib
       --enable-libopus
+      --enable-libvpx
+      --enable-libx264
+      --enable-libx265
       --enable-lzma
       --enable-sdl2
       --enable-videotoolbox
