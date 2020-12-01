@@ -23,6 +23,11 @@ class Vim < Formula
   conflicts_with "macvim",
     because: "vim and macvim both install vi* binaries"
 
+  patch do
+    url "https://raw.githubusercontent.com/unrevre/homebrew-ales/ddf6d387c6b7719de7ff416bd99d2f18e397828b/patches/vim-disable-features.patch"
+    sha256 "2b105a1025ed3b1f2431b7430260c2aa5b29a448474ee325f50193f7b0877aa7"
+  end
+
   def install
     ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
 
