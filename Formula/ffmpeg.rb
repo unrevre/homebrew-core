@@ -62,7 +62,7 @@ class Ffmpeg < Formula
       --enable-decoder=aac,h264,mpeg4,libopus,vp8,vp9
       --enable-muxer=adts,flv,matroska,mp4,opus
       --enable-demuxer=aac,concat,flv,live_flv,matroska,mov,ogg
-      --enable-filter=aresample
+      --enable-filter=aresample,scale,testsrc
       --enable-parser=aac,opus
       --enable-protocol=file,pipe
       --enable-ffmpeg
